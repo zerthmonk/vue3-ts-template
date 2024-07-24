@@ -1,0 +1,17 @@
+services:
+  webapp:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_HOST=0.0.0.0
+      - VITE_PORT=3000
+      - CHOKIDAR_USEPOLLING=True
+    volumes:
+      - node_volume:/opt/app/node_modules
+      - ./:/opt/app
+    command: pnpm run dev
+
+volumes:
+  node_volume: {}
